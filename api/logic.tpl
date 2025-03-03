@@ -21,7 +21,7 @@ func New{{.logic}}(ctx context.Context, svcCtx *svc.ServiceContext) *{{.logic}} 
 
 func (l *{{.logic}}) {{.function}}({{.request}}) {{.responseType}} {
 	// todo: add your logic here and delete this line
-    // import "github.com/zeromicro/x/errors"
+    // import "github.com/go-hao/zero/xerrors"
     // instead of "errors"
     // for code-data response
 

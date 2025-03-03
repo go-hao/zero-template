@@ -13,8 +13,8 @@ goctl template init
 ```
 goctl --version
 ```
-3. Replace files respectively. DO NOT copy folder 
+3. Replace files respectively. 
 ```
 # e.g. to replace tpl in api
-cp api/* ~/.goctl/GOCTL_VERSION/api
+cp -r api ~/.goctl/GOCTL_VERSION/
 ```
