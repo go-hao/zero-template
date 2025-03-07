@@ -4,8 +4,9 @@ import (
 	"flag"
 	"fmt"
 
-    "github.com/go-hao/zero/xvalidator"
 	{{.importPackages}}
+	"github.com/zeromicro/go-zero/rest/httpx"
+    "github.com/go-hao/zero/xvalidator"
 )
 
 var configFile = flag.String("f", "etc/{{.serviceName}}.yaml", "the config file")
