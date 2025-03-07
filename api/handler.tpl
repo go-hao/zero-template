@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	{{if .HasRequest}}"github.com/zeromicro/go-zero/rest/httpx"{{end}}
-    "github.com/go-hao/zero/xhttp"
 	{{.ImportPackages}}
+    "github.com/go-hao/zero/xhttp"
 )
 
 {{if .HasDoc}}{{.Doc}}{{end}}
