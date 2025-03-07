@@ -5,7 +5,6 @@ import (
 
 	{{if .HasRequest}}"github.com/zeromicro/go-zero/rest/httpx"{{end}}
     "github.com/go-hao/zero/xhttp"
-    "github.com/go-hao/zero/xvalidator"
 	{{.ImportPackages}}
 )
 
@@ -17,11 +16,6 @@ func {{.HandlerName}}(svcCtx *svc.ServiceContext) http.HandlerFunc {
             xhttp.Json(r.Context(), w, err)
 			return
 		}
-
-		if err := xvalidator.Validate(r.Context(), &req); err != nil {
-			xhttp.Json(r.Context(), w, err)
-			return
-		} 
 
 		{{end}}l := {{.LogicName}}.New{{.LogicType}}(r.Context(), svcCtx)
 		{{if .HasResp}}resp, {{end}}err := l.{{.Call}}({{if .HasRequest}}&req{{end}})
