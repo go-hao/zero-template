@@ -5,6 +5,7 @@ import (
 
 	{{if .HasRequest}}"github.com/zeromicro/go-zero/rest/httpx"{{end}}
 	{{.ImportPackages}}
+   	"github.com/go-hao/zero/xerrors" 
     "github.com/go-hao/zero/xhttp"
 )
 
@@ -13,7 +14,14 @@ func {{.HandlerName}}(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		{{if .HasRequest}}var req types.{{.RequestType}}
 		if err := httpx.Parse(r, &req); err != nil {
-            xhttp.Json(r.Context(), w, err)
+            switch e := svcCtx.ErrBadReqest.(type) {
+			case *xerrors.Error:
+				xhttp.Json(r.Context(), w, e.Detail(err))
+			case xerrors.Error:
+				xhttp.Json(r.Context(), w, e.Detail(err))
+			default:
+				xhttp.Json(r.Context(), w, err)
+			}
 			return
 		}
 
