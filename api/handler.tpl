@@ -14,7 +14,7 @@ func {{.HandlerName}}(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		{{if .HasRequest}}var req types.{{.RequestType}}
 		if err := httpx.Parse(r, &req); err != nil {
-            switch e := svcCtx.ErrBadReqest.(type) {
+            switch e := svcCtx.ErrBadRequest.(type) {
 			case *xerrors.Error:
 				xhttp.Json(r.Context(), w, e.Detail(err))
 			case xerrors.Error:
