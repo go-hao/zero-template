@@ -5,7 +5,7 @@ import (
 
 	{{if .HasRequest}}"github.com/zeromicro/go-zero/rest/httpx"{{end}}
 	{{.ImportPackages}}
-   	"github.com/go-hao/zero/xerrors" 
+   	{{if .HasRequest}}"github.com/go-hao/zero/xerrors"{{end}}
     "github.com/go-hao/zero/xhttp"
 )
 
